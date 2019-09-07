@@ -1,8 +1,14 @@
 # (c) 2005 Ian Bicking and contributors; written for Paste (http://pythonpaste.org)
 # Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
 
-from email.MIMEText import MIMEText
-from email.MIMEMultipart import MIMEMultipart
+try:
+    from email.mime.text import MIMEText
+except ImportError:
+    from email.MIMEText import MIMEText
+try:
+    from email.mime.multipart import MIMEMultipart
+except ImportError:
+    from email.MIMEMultipart import MIMEMultipart
 import smtplib
 import ssl
 import time

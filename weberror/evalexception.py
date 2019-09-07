@@ -22,12 +22,16 @@ to see the full debuggable traceback.  Also, this URL is printed to
 ``wsgi.errors``, so you can open it up in another browser window.
 
 """
-import httplib
+from __future__ import absolute_import
+try:
+    import http.client as httplib
+except ImportError:
+    import httplib
 import sys
 import os
 import cgi
 import traceback
-from cStringIO import StringIO
+from io import StringIO
 import pprint
 import itertools
 import time
@@ -43,7 +47,7 @@ from paste import request
 from paste import urlparser
 from paste.util import import_string
 
-import evalcontext
+from . import evalcontext
 from weberror import errormiddleware, formatter, collector
 from weberror.util import security
 from tempita import HTMLTemplate

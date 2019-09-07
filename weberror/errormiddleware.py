@@ -7,10 +7,7 @@ Error handler middleware
 import sys
 import traceback
 import cgi
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
+from io import StringIO
 from weberror import formatter, collector, reporter
 from paste import wsgilib
 from paste import request

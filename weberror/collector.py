@@ -23,10 +23,7 @@ supplements
 import sys
 import traceback
 import time
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
+from io import StringIO
 import linecache
 from weberror.util import source_encoding, serial_number_generator
 

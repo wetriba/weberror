@@ -6,8 +6,12 @@
 # the MIT License: http://www.opensource.org/licenses/mit-license.php
 
 
-import re, cgi, urllib, htmlentitydefs, codecs
-from StringIO import StringIO
+try:
+    from html import entities as htmlentitydefs
+except ImportError:
+    import htmlentitydefs
+import re, cgi, urllib, codecs
+from io import StringIO
 
 xml_escapes = {
     '&' : '&amp;',
