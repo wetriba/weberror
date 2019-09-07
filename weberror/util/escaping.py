@@ -67,7 +67,7 @@ def is_ascii_str(text):
 class XMLEntityEscaper(object):
     def __init__(self, codepoint2name, name2codepoint):
         self.codepoint2entity = dict([(c, u'&%s;' % n)
-                                      for c,n in codepoint2name.iteritems()])
+                                      for c,n in codepoint2name.items()])
         self.name2codepoint = name2codepoint
 
     def escape_entities(self, text):
