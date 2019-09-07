@@ -201,10 +201,10 @@ def get_debug_count(req):
     elif 'weberror.evalexception.debug_count' in environ:
         return environ['weberror.evalexception.debug_count']
     else:
-        next = debug_counter.next()
-        environ['weberror.evalexception.debug_count'] = next
-        environ['paste.evalexception.debug_count'] = next
-        return next
+        next_count = next(debug_counter)
+        environ['weberror.evalexception.debug_count'] = next_count
+        environ['paste.evalexception.debug_count'] = next_count
+        return next_count
 
 
 class InvalidTemplate(Exception):
