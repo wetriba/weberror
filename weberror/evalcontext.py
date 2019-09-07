@@ -1,4 +1,5 @@
 from io import StringIO
+from six import exec_
 import traceback
 import threading
 import pdb
@@ -32,7 +33,7 @@ class EvalContext(object):
             sys.stdout = out
             try:
                 code = compile(s, '<web>', "single", 0, 1)
-                exec code in self.namespace, self.globs
+                exec_(code, self.namespace, self.globs)
                 debugger.set_continue()
             except KeyboardInterrupt:
                 raise
