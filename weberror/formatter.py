@@ -274,7 +274,7 @@ class TextFormatter(AbstractFormatter):
             for n, v in items:
                 try:
                     v = repr(v)
-                except Exception, e:
+                except Exception as e:
                     v = 'Cannot display: %s' % e
                 v = truncate(v)
                 lines.append('  %s: %s' % (n, v))
@@ -379,7 +379,7 @@ class HTMLFormatter(TextFormatter):
         for name, value in rows:
             try:
                 value = repr(value)
-            except Exception, e:
+            except Exception as e:
                 value = 'Cannot print: %s' % e
             odd = not odd
             table.append(

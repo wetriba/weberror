@@ -43,7 +43,7 @@ def valid_csrf_token(secret, token):
     try:
         expiry_ts, hashed = token.split(',')
         expiry_dt = datetime.utcfromtimestamp(int(expiry_ts))
-    except ValueError, e:
+    except ValueError as e:
         return False
 
     if expiry_dt < datetime.utcnow():

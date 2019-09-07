@@ -128,7 +128,7 @@ def wsgiapp():
                 form['environ'] = environ
                 try:
                     res = func(*args, **form.mixed())
-                except ValueError, ve:
+                except ValueError as ve:
                     status = '500 Server Error'
                     res = '<html>There was an error: %s</html>' % \
                         html_quote(ve)
@@ -154,7 +154,7 @@ def get_debug_info(func):
         debugcount = req.params['debugcount']
         try:
             debugcount = int(debugcount)
-        except ValueError, e:
+        except ValueError as e:
             return exc.HTTPBadRequest(
                 "Invalid value for debugcount (%r): %s"
                 % (debugcount, e))
@@ -529,7 +529,7 @@ class DebugInfo(object):
             if id(frame) == tbid:
                 return frame
         else:
-            raise ValueError, (
+            raise ValueError(
                 "No frame by id %s found from %r" % (tbid, self.frames))
 
     def wsgi_application(self, environ, start_response):
@@ -645,7 +645,7 @@ def pprint_format(value, safe=False):
     out = StringIO()
     try:
         pprint.pprint(value, out)
-    except Exception, e:
+    except Exception as e:
         if safe:
             out.write('Error: %s' % e)
         else:
